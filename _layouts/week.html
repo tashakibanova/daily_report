@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<div class="grid">
+  <div class="col-12">
+    <h1>{{ page.title }}</h1>
+    {% if page.week_range %}<span class="pill">{{ page.week_range }}</span>{% endif %}
+  </div>
+
+  <div class="col-12">
+    <div class="kpi">
+      <div class="card">
+        <div class="label">Итоги недели</div>
+        <div class="value">{{ page.week_summary | default: "—" }}</div>
+      </div>
+      <div class="card">
+        <div class="label">Фокус следующей недели</div>
+        <div class="value">{{ page.next_week_focus | default: "—" }}</div>
+      </div>
+      <div class="card">
+        <div class="label">Время (всего)</div>
+        <div class="value">{{ page.time_total | default: "—" }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <div class="card">
+      <h2>Подробности</h2>
+      {{ content }}
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <h2>Время по направлениям</h2>
+      {% if page.areas %}
+        <table>
+          <thead>
+            <tr>
+              <th>Направление</th>
+              <th style="text-align:right">Время</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in page.areas %}
+              <tr>
+                <td>{{ a.name }}</td>
+                <td style="text-align:right">{{ a.time | default: "—" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <div class="muted">—</div>
+      {% endif %}
+    </div>
+
+    <div class="col-12">
+      {% include giscus.html %}
+    </div>
+  </div>
+</div>
+

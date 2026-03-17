@@ -1,0 +1,37 @@
+title: "Daily Report"
+description: "Ежедневные и недельные отчёты"
+timezone: Europe/Moscow
+lang: ru-RU
+
+markdown: kramdown
+theme: minima
+
+collections:
+  reports:
+    output: true
+    permalink: /report/:name/
+  weeks:
+    output: true
+    permalink: /week/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: reports
+    values:
+      layout: report
+  - scope:
+      path: ""
+      type: weeks
+    values:
+      layout: week
+
+exclude:
+  - README.md
+
+giscus:
+  enabled: false
+  repo: ""
+  repo_id: ""
+  category: ""
+  category_id: ""

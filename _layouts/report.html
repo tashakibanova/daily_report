@@ -1,0 +1,104 @@
+---
+layout: default
+---
+
+{% assign d = page.date | date: "%d.%m.%Y" %}
+
+<div class="grid">
+  <div class="col-12">
+    <h1>Ежедневный отчёт · {{ d }}</h1>
+    {% if page.project %}<span class="pill">{{ page.project }}</span>{% endif %}
+  </div>
+
+  <div class="col-12">
+    <div class="kpi">
+      <div class="card">
+        <div class="label">Итог дня</div>
+        <div class="value">{{ page.day_summary | default: "—" }}</div>
+      </div>
+      <div class="card">
+        <div class="label">Время (всего)</div>
+        <div class="value">{{ page.time_total | default: "—" }}</div>
+      </div>
+      <div class="card">
+        <div class="label">Фокус завтра</div>
+        <div class="value">{{ page.tomorrow_focus | default: "—" }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <div class="card">
+      <h2>Задачи и результат</h2>
+
+      {% if page.areas %}
+        {% for a in page.areas %}
+          <div class="section">
+            <h3>{{ a.name }}{% if a.time %} · {{ a.time }}{% endif %}</h3>
+            {% if a.tasks %}
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:45%">Задача</th>
+                    <th style="width:55%">Результат</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for t in a.tasks %}
+                    <tr>
+                      <td>{{ t.task | default: "—" }}</td>
+                      <td>{{ t.result | default: "—" }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% else %}
+              <div class="muted">Нет задач.</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="muted">Добавьте блоки `areas` в шапке файла отчёта.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <h2>Планы</h2>
+      <div class="two-col">
+        <div>
+          <h3>На завтра</h3>
+          {% if page.tomorrow_tasks %}
+            <ul class="task-list">
+              {% for t in page.tomorrow_tasks %}
+                <li>{{ t }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <div class="muted">—</div>
+          {% endif %}
+        </div>
+        <div>
+          <h3>Фокус (след. день)</h3>
+          <div>{{ page.tomorrow_focus | default: "—" }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card section">
+      <h2>Заметки</h2>
+      <div class="muted">
+        Редактируйте этот файл прямо в GitHub. Руководитель может оставить комментарии ниже (giscus).
+      </div>
+      <div class="section">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    {% include giscus.html %}
+  </div>
+</div>
+
