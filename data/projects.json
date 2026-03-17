@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "projects": [
+    { "id": "payment_services", "name": "Оплата сервисов" },
+    { "id": "tg_content", "name": "ТГ канал, контент" },
+    { "id": "killeraction", "name": "KillerAction" },
+    { "id": "content_factory", "name": "Контент-завод" },
+    { "id": "stats_reports", "name": "Статистика, отчеты" }
+  ]
+}
+

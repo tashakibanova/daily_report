@@ -29,6 +29,8 @@ a:hover{text-decoration:underline}
 .site-title a{color:var(--text);font-weight:700}
 .site-nav a{color:var(--muted);margin-left:12px}
 .site-nav a:hover{color:var(--text)}
+.site-nav a.active{color:var(--text);text-decoration:underline}
+.site-actions{display:flex;align-items:center;gap:10px}
 .site-footer{border-top:1px solid var(--border);margin-top:32px;color:var(--muted)}
 
 h1,h2,h3{line-height:1.2;margin:20px 0 12px}
@@ -70,4 +72,81 @@ th{color:var(--muted);font-weight:600;text-align:left}
 .task-list li{margin:6px 0}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width: 900px){.two-col{grid-template-columns:1fr}}
+
+.btn{
+  appearance:none;
+  border:1px solid var(--border);
+  background: rgba(16,26,48,.6);
+  color: var(--text);
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn:hover{border-color: rgba(96,165,250,.45)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn-primary{background: rgba(96,165,250,.18); border-color: rgba(96,165,250,.35)}
+.btn-ghost{background: transparent}
+.input,.select,.textarea{
+  width:100%;
+  background: rgba(16,26,48,.45);
+  border:1px solid var(--border);
+  color: var(--text);
+  border-radius:10px;
+  padding:10px 10px;
+  outline:none;
+}
+.textarea{min-height:90px;resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row > *{flex:1 1 auto}
+.status{
+  margin:10px 0 0;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background: rgba(16,26,48,.55);
+}
+.status-success{border-color: rgba(34,197,94,.35)}
+.status-warn{border-color: rgba(250,204,21,.35)}
+.status-error{border-color: rgba(239,68,68,.35)}
+.modal-backdrop{
+  position:fixed;inset:0;
+  background: rgba(0,0,0,.55);
+  z-index:50;
+}
+.modal{
+  position:fixed;inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:60;
+  padding:16px;
+}
+.modal-card{
+  width:min(720px, 100%);
+  background: rgba(16,26,48,.92);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:12px 14px;
+  border-bottom:1px solid var(--border);
+}
+.modal-title{font-weight:800}
+.modal-body{padding:14px}
+.hidden{display:none !important}
+.table-like{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+}
+.table-like th,.table-like td{
+  border-bottom:1px solid var(--border);
+  padding:10px 8px;
+  vertical-align:top;
+}
+.table-like th{color:var(--muted);font-weight:700}
+.cell-actions{white-space:nowrap}
 
